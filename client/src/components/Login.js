@@ -3,33 +3,47 @@ import { loginFields } from "../constants/formFields";
 import FormAction from "./FormAction";
 import FormExtra from "./FormExtra";
 import Input from "./Input";
-
-const fields=loginFields;
+import axios from 'axios';
+const fields = loginFields;
 let fieldsState = {};
-fields.forEach(field=>fieldsState[field.id]='');
+fields.forEach(field => fieldsState[field.id] = '');
 
-export default function Login(){
-    const [loginState,setLoginState]=useState(fieldsState);
+export default function Login() {
+    const [loginState, setLoginState] = useState(fieldsState);
 
-    const handleChange=(e)=>{
-        setLoginState({...loginState,[e.target.id]:e.target.value})
+    const handleChange = (e) => {
+        setLoginState({ ...loginState, [e.target.id]: e.target.value })
     }
 
-    const handleSubmit=(e)=>{
+    const handleSubmit = (e) => {
         e.preventDefault();
         authenticateUser();
     }
 
     //Handle Login API Integration here
-    const authenticateUser = () =>{
-
+    const authenticateUser = async () => {
+        try {
+            axios.post('http://localhost:9000/login', loginState).then((response) => {
+                console.log(response.data);
+                if (response.status === 200) {
+                    alert(response.data.username + " has been logged in successfully");
+                    window.location.href = "/";
+                }
+                else {
+                    window.location.href = "/Login";
+                    throw new Error(response.data);
+                }
+            });
+        } catch (error) {
+            console.log(error.message);
+        }
     }
 
-    return(
+    return (
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-        <div className="-space-y-px">
-            {
-                fields.map(field=>
+            <div className="-space-y-px">
+                {
+                    fields.map(field =>
                         <Input
                             key={field.id}
                             handleChange={handleChange}
@@ -41,16 +55,16 @@ export default function Login(){
                             type={field.type}
                             isRequired={field.isRequired}
                             placeholder={field.placeholder}
-                    />
-                
-                )
-            }
-        </div>
+                        />
 
-        <FormExtra/>
-        <FormAction handleSubmit={handleSubmit} text="Login"/>
+                    )
+                }
+            </div>
 
-      </form>
+            <FormExtra />
+            <FormAction handleSubmit={handleSubmit} text="Login" />
+
+        </form>
     )
 }
 

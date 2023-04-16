@@ -1,7 +1,7 @@
-if(process.env.NODE_ENV != "production"){
+if (process.env.NODE_ENV != "production") {
 
-    require("dotenv").config({ path: "./.env"})
-  }
+    require("dotenv").config({ path: "./.env" })
+}
 const express = require('express');
 const cors = require('cors');
 const path = require("path")
@@ -11,6 +11,10 @@ const methodOverride = require("method-override");
 const session = require("express-session")
 const flash = require("connect-flash");
 const mongoose = require('mongoose');
+const passport = require("passport");
+var LocalStrategy = require('passport-local');
+const user = require("./Models/user");
+const auth = require('./Routes/auth');
 mongoose.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
     console.log('Connected to DB');
 }).catch(err => {
@@ -19,15 +23,33 @@ mongoose.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
 });
+const sessionflash = {
+    secret: process.env.SECRETE,
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        httpOnly: true,
+        expires: Date.now() + 7 * 24 * 60 * 60 * 1000
+    }
+};
+app.use(session(sessionflash))
+app.use(flash());
+app.use(passport.authenticate('session'));
+app.use((req, res, next) => {
 
-const user = require("./Models/user");
-const auth = require('./Routes/auth');
-
+    res.locals.success = req.flash('success');
+    res.locals.error = req.flash('error');
+    res.locals.currentUser = req.user;
+    next();
+});
+app.use(express.static(path.join(__dirname, "client", "build")));
+app.use(express.static(path.join(__dirname, "client", "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors());
+app.use(cors({origin:'http://localhost:3000',credentials:true}));
 app.use(methodOverride("_method"));
 app.use(auth);
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
+app.use(passport.initialize());
+passport.use(new LocalStrategy(user.authenticate()));
+passport.serializeUser(user.serializeUser());
+passport.deserializeUser(user.deserializeUser());
