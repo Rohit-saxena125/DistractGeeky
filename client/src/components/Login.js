@@ -10,11 +10,26 @@ fields.forEach(field => fieldsState[field.id] = '');
 
 export default function Login() {
     const [loginState, setLoginState] = useState(fieldsState);
-
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const handleChange = (e) => {
         setLoginState({ ...loginState, [e.target.id]: e.target.value })
     }
+    function handleLogout() {
+        axios.get('http://localhost:9000/logout').then((response) => {
+            console.log(response.data);
+            if (response.status === 200) {
+                alert(response.data + " has been logged out successfully");
+                window.location.href = "/Login";
+                setIsLoggedIn(false);
+            }
+            else {
+                window.location.href = "/";
+                setIsLoggedIn(true);
+                throw new Error(response.data);
+            }
+        });
 
+    }
     const handleSubmit = (e) => {
         e.preventDefault();
         authenticateUser();
@@ -26,12 +41,15 @@ export default function Login() {
             axios.post('http://localhost:9000/login', loginState).then((response) => {
                 console.log(response.data);
                 if (response.status === 200) {
-                    alert(response.data.username + " has been logged in successfully");
+                    alert(response.data + " has been logged in successfully");
                     window.location.href = "/";
+                    setIsLoggedIn(true);
                 }
                 else {
                     window.location.href = "/Login";
+                    setIsLoggedIn(false);
                     throw new Error(response.data);
+
                 }
             });
         } catch (error) {
@@ -67,6 +85,22 @@ export default function Login() {
         </form>
     )
 }
+
+
+
+// function LoginButton() {
+//   return (
+//     <button>
+//       {isLoggedIn ? <LogoutIcon /> : <LoginIcon />}
+//       {isLoggedIn ? 'Logout' : 'Login'}
+//     </button>
+//   );
+// }
+// function LogoutIcon() {
+//
+
+//   return <span onClick={handleLogout}>Logout</span>;
+// }
 
 
 

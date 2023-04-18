@@ -26,30 +26,28 @@ app.listen(port, () => {
 const sessionflash = {
     secret: process.env.SECRETE,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized:false,
     cookie: {
         httpOnly: true,
         expires: Date.now() + 7 * 24 * 60 * 60 * 1000
     }
 };
+// app.use(passport.initialize());
 app.use(session(sessionflash))
 app.use(flash());
-app.use(passport.authenticate('session'));
+// app.use(passport.authenticate('session'));
 app.use((req, res, next) => {
-
-    res.locals.success = req.flash('success');
-    res.locals.error = req.flash('error');
     res.locals.currentUser = req.user;
     next();
+
 });
-app.use(express.static(path.join(__dirname, "client", "build")));
-app.use(express.static(path.join(__dirname, "client", "public")));
+// app.use(express.static(path.join(__dirname, "client", "build")));
+// app.use(express.static(path.join(__dirname, "client", "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors({origin:'http://localhost:3000',credentials:true}));
 app.use(methodOverride("_method"));
-app.use(auth);
-app.use(passport.initialize());
-passport.use(new LocalStrategy(user.authenticate()));
-passport.serializeUser(user.serializeUser());
-passport.deserializeUser(user.deserializeUser());
+app.use('/',auth);
+// passport.use(new LocalStrategy(user.authenticate()));
+// passport.serializeUser(user.serializeUser());
+// passport.deserializeUser(user.deserializeUser());
