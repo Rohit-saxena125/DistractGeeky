@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../Models/user');
-const crypto = require('crypto');
 const passport = require("passport");
 router.post("/register", async (req, res) => {
     try {
@@ -9,11 +8,8 @@ router.post("/register", async (req, res) => {
         const user = new User({ username, email ,password});
         const newUser = await user.save();
         console.log(newUser);
-        // req.flash("success", "You are now registered, please login");
-       res.status(200).send(newUser);
+       res.status(201).send(newUser);
     } catch (e) {
-
-        // req.flash("error", e.message);
         res.status(400).send(e);
     }
 
@@ -36,9 +32,9 @@ router.post("/login", async(req, res) => {
         res.status(400).send(e.message);
     }
 });
-
 router.get('/logout', function (req, res, next) {
     console.log(req.session.cookie);
+    console.log(req.session.username);
     req.session.destroy(function(err) {
         if (err) {
           console.log(err);

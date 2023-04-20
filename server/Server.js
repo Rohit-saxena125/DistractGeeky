@@ -15,6 +15,8 @@ const passport = require("passport");
 var LocalStrategy = require('passport-local');
 const user = require("./Models/user");
 const auth = require('./Routes/auth');
+const history = require('./Routes/History');
+const video = require('./Routes/videosec');
 mongoose.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
     console.log('Connected to DB');
 }).catch(err => {
@@ -48,6 +50,8 @@ app.use(express.json());
 app.use(cors({origin:'http://localhost:3000',credentials:true}));
 app.use(methodOverride("_method"));
 app.use('/',auth);
+app.use('/',history);
+app.use('/',video);
 // passport.use(new LocalStrategy(user.authenticate()));
 // passport.serializeUser(user.serializeUser());
 // passport.deserializeUser(user.deserializeUser());

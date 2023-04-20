@@ -1,0 +1,19 @@
+.di {
+    transition-duration: 0.4s;
+  }
+  
+  .di:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+  }
+  .my{
+    color: black;
+    
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-bottom: 2rem;
+    /* display: flex; */
+    /* text in center */
+    text-align: center;
+    justify-content: center;
+  }

@@ -1,0 +1,10 @@
+.my{
+   
+    color: #fff;
+    margin-top: -15rem;
+    margin-left: 20rem;
+    display: flex;
+    /* text in center */
+    text-align: center;
+    justify-content: center;
+}

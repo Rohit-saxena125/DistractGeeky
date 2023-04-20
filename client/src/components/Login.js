@@ -74,14 +74,13 @@ export default function Login() {
                             isRequired={field.isRequired}
                             placeholder={field.placeholder}
                         />
-
                     )
                 }
             </div>
 
             <FormExtra />
-            <FormAction handleSubmit={handleSubmit} text="Login" />
-
+                { isLoggedIn ?<FormAction handleSubmit={handleLogout} text="Logout" />:<FormAction handleSubmit={handleSubmit} text="Login" />}
+                
         </form>
     )
 }

@@ -23,8 +23,8 @@ export default function Signup() {
     try {
       axios.post('http://localhost:9000/register', signupState).then((response) => {
         console.log(response.data);
-        if (response.status === 200) {
-          alert(response.data.username + " has been logged in successfully");
+        if (response.status === 201) {
+          alert(response.data.username + " has been registered in successfully");
           window.location.href = "/Login";
         }
     else {

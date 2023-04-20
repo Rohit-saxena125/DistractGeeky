@@ -1,11 +1,12 @@
 import React from 'react';
-
+import '../css/section.css';
 const Section = () => {
   return (
     <div className='bg-hero-image w-full h-screen bg-cover bg-center flex items-center px-4'>
         <div className='uppercase text-center text-white font-extrabold'>
-            <h1 className='text-8xl '>Tailwind CSS</h1>
-            <h3>Navbar Tutorial</h3>
+          <div className='my'>
+            <h1 className='text-5xl'>Welcome to <span className='text-red-500'>Youtube</span> History</h1>
+            </div>
         </div>
     </div>
   );
