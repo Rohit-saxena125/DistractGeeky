@@ -25,7 +25,7 @@ const Header = () => {
                 <MenuOutlined onClick={showMenu} className='scale-150 cursor-pointer'/>
             </div>
                 <ul className='hidden md:flex gap-8 p-6 uppercase bg-white/10'>
-                    <li><Link to='/'>Home</Link></li>
+                    <li><Link to='/home'>Home</Link></li>
                     <li><Link to='/history'>HISTORY</Link></li>
                     <li><Link to='/'>RECOMMENDATION</Link></li>
                     <li><Link to='/'>PRACTICE</Link></li>

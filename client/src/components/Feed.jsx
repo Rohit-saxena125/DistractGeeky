@@ -3,7 +3,7 @@ import { Box, Stack, Typography } from "@mui/material";
 
 import { fetchFromAPI } from "../utils/fetchFromAPI";
 import { Videos, Sidebar } from "./";
-
+import Navbar from '../components/Navbar'
 const Feed = () => {
   const [selectedCategory, setSelectedCategory] = useState("New");
   const [videos, setVideos] = useState(null);
@@ -16,6 +16,11 @@ const Feed = () => {
     }, [selectedCategory]);
 
   return (
+    <>
+    <>
+    <Navbar />
+    </>
+    <>
     <Stack sx={{ flexDirection: { sx: "column", md: "row" } }}>
       <Box sx={{ height: { sx: "auto", md: "92vh" }, borderRight: "1px solid #3d3d3d", px: { sx: 0, md: 2 } }}>
         <Sidebar selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
@@ -33,6 +38,8 @@ const Feed = () => {
         <Videos videos={videos} />
       </Box>
     </Stack>
+    </>
+    </>
   );
 };
 
