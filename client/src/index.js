@@ -10,7 +10,7 @@ import { ChannelDetail, VideoDetail, SearchFeed, Feed } from './components';
 import App from './App';
 ReactDOM.render(
   <Router>
-    <Box sx={{ backgroundColor: 'green' }}>
+    <Box sx={{ backgroundColor: '#c2eaba',backgroundImage: 'linear-gradient(319deg, #c2eaba 0%, #c5f4e0 37%, #efc2cf 100%)' }}>
       <Routes>
         <Route exact path='/' element={<App />} />
         <Route path='/login' element={<Login />} />
