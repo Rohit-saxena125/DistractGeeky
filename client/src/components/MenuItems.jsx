@@ -8,7 +8,7 @@ const MenuItems = ({showMenu,active}) => {
                     <Close onClick={showMenu} className='cursor-pointer'/>
                     <li><Link to='/home'>Home</Link></li>
                     <li><Link to='/history'>History</Link></li>
-                    <li><Link to='/'>RECOMMENDATION</Link></li>
+                    <li><Link to='/recommendation'>RECOMMENDATION</Link></li>
                     <li><Link to='/'>PRACTICE</Link></li>
                     <li><Link to='/'>PAYMENT</Link></li>
                     {/* <li><Link to='/Login'>Login</Link></li> */}
