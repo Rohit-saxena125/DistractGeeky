@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import './index.css'
+import './index.css';
+import Recommend from './components/Recoomendation';
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import History from '../src/components/history';
@@ -13,6 +14,7 @@ ReactDOM.render(
     <Box sx={{ backgroundColor: '#c2eaba',backgroundImage: 'linear-gradient(319deg, #c2eaba 0%, #c5f4e0 37%, #efc2cf 100%)' }}>
       <Routes>
         <Route exact path='/' element={<App />} />
+        <Route  path='/recommendation' element={<Recommend />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/history' element={<History />} />
