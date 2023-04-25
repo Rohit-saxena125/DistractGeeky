@@ -28,7 +28,7 @@ const Header = () => {
                     <li><Link to='/home'>Home</Link></li>
                     <li><Link to='/history'>HISTORY</Link></li>
                     <li><Link to='/recommendation'>RECOMMENDATION</Link></li>
-                    <li><Link to='/'>PRACTICE</Link></li>
+                    <li><Link to='/practice'>PRACTICE</Link></li>
                     <li><Link to='/'>PAYMENT</Link></li>
                     <li><Link to='/'>PERFORMANCE</Link></li>
                     <li><Link to='/login'><FontAwesomeIcon icon={faUser} /></Link></li>

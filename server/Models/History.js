@@ -13,3 +13,4 @@ const HistorySchema = new mongoose.Schema({
 });
 const History = mongoose.model('History', HistorySchema);
 module.exports = History;
+
