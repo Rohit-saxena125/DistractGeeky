@@ -1,10 +1,25 @@
 .my{
    
     color: #fff;
-    margin-top: -15rem;
+    margin-top: -20rem;
     margin-left: 20rem;
     display: flex;
     /* text in center */
     text-align: center;
     justify-content: center;
+    width: 60%;
+    min-width: 60%;
+}
+p{
+    font-style: italic;
+    font-size: larger;
+    color: wheat;
+}
+.para-div{
+    width:60%;
+    min-width: 50%;
+    display: inline-block;
+    position: absolute;
+    top: 60%;
+    left:36%;
 }

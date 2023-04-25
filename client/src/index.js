@@ -5,7 +5,7 @@ import './index.css';
 import Recommend from './components/Recoomendation';
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import History from '../src/components/history';
+import Plan from '../src/components/Plan';
 import { Box } from '@mui/material';
 import { ChannelDetail, VideoDetail, SearchFeed, Feed } from './components';
 import App from './App';
@@ -18,7 +18,7 @@ ReactDOM.render(
         <Route  path='/recommendation' element={<Recommend />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
-        <Route path='/history' element={<History />} />
+        <Route path='/plan' element={<Plan />} />
         <Route  path='/home/' element={<Feed />} />
         <Route path='/video/:id' element={<VideoDetail />} />
         <Route path='channel/:id' element={<ChannelDetail />} />

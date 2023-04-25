@@ -16,7 +16,7 @@ const Header = () => {
     <div className='fixed w-full text-white flex justify-between p-4 items-center'>
 
         <div className='text-2xl font-bold text-center uppercase'>
-            <h1> <span className='block text-4xl'>GEEKS</span></h1>
+            <h1> <span className='block text-4xl'> DISTRACT FREE GEEKS</span></h1>
         </div>
 
         <nav>
@@ -26,10 +26,10 @@ const Header = () => {
             </div>
                 <ul className='hidden md:flex gap-8 p-6 uppercase bg-white/10'>
                     <li><Link to='/home'>Home</Link></li>
-                    <li><Link to='/history'>HISTORY</Link></li>
+                    <li><Link to='/plan'>plan</Link></li>
                     <li><Link to='/recommendation'>RECOMMENDATION</Link></li>
                     <li><Link to='/practice'>PRACTICE</Link></li>
-                    <li><Link to='/'>PAYMENT</Link></li>
+                    {/* <li><Link to='/'>PAYMENT</Link></li> */}
                     <li><Link to='/'>PERFORMANCE</Link></li>
                     <li><Link to='/login'><FontAwesomeIcon icon={faUser} /></Link></li>
                 </ul>
