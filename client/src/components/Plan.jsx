@@ -1,42 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const HistoryPage = () => {
-  const [history, setHistory] = useState([]);
-
+const Plan = () => {
+  const [plan, setPlan] = useState([]);
+  // to do list for the day for logged in user
   useEffect(() => {
-    const getHistory = async () => {
-      try {
-        const res = await axios.get('http://localhost:9000/history');
-        setHistory(res.data);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    getHistory();
+    axios
+      .get('/api/plan')
+      .then((res) => {
+        setPlan(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   return (
     <div>
-      <h1>My History</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Number of Videos Watched</th>
-          </tr>
-        </thead>
-        <tbody>
-          {history.map((item) => (
-            <tr key={item._id}>
-              <td>{item.title}</td>
-              <td>{item.numberOfVideos}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <h1>Plan</h1>
+      <ul>
+        {plan.map((item) => (
+          <li key={item.id}>{item.task}</li>
+        ))}
+      </ul>
     </div>
   );
 };
 
-export default HistoryPage;
+export default Plan;
