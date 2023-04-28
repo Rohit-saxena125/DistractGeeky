@@ -106,6 +106,7 @@ const Footer = () => {
           <div class="">
             <h6
               class="mb-4 flex justify-center font-semibold uppercase md:justify-start">
+
               Thanks To
             </h6>
             <p class="mb-4">

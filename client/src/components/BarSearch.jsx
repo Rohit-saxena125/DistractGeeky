@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import  '../css/bar.css';
 const SearchBar = () => {
   const [query, setQuery] = useState('');
   const [questions, setQuestions] = useState([]);
@@ -25,16 +25,18 @@ const SearchBar = () => {
         Search for Help??????
       </h1>
       <form onSubmit={handleSubmit}>
-        <input type="text" value={query} onChange={handleInputChange} placeholder="Search for programming concept" />
+        <input style={{marginLeft:"100px"}} type="text" value={query} onChange={handleInputChange} placeholder="Search for programming concept" />
         <button type="submit" onClick={handleSubmit}  >     Search</button>
       </form>
       <ul>
         {questions.map((question) => (
-          <li key={question.question_id}>
+          <li className="mydf" key={question.question_id}>
             <a href={question.link}>{question.title}</a>
           </li>
         ))}
       </ul>
+      <br />
+      <br />
     </div>
   );
 };

@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&subset=latin-ext');
+
+*, *::before, *::after{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html{
+  font-size: 10px;
+}
+
+/* body{
+  font-family: Arial, sans-serif;
+  font-size: 1.6rem;
+  background: linear-gradient(135deg, #034686 0%,#034686 50%,#034382 50%,#034382 100%);
+  color: #ccc;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  user-select: none;
+} */
+
+#todoApp {
+  margin-top: 5rem;
+  display: flex;
+  color: #ddd;
+  background-color: #3C424A;
+  box-shadow: 0px 5px 17px -1px rgba(0,0,0,0.41);
+  border-radius: 4px;
+  min-width: 420px;
+  min-height: 400px;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+#todoApp > .header {
+  display: flex;
+  margin: 5rem auto;
+  min-width: 200px;
+  font-size: 2.2rem;
+  font-weight: 500;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#todoApp > .header i {
+  color: #666;
+  font-size: 1.6rem;
+  transform: scaleY(1.4) scaleX(1.2);
+  cursor: pointer;
+}
+
+#todoApp > .header i:hover {
+  color: #999;
+}
+
+#todoApp > .header i.disabled {
+  color: #666;
+  cursor: auto;
+  opacity: 0.4;
+}
+
+#todoApp > .header .date {
+  margin-top: 0.5rem;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: #888;
+}
+
+#todoApp > .addTask {
+  position: relative;
+  margin: 0 4rem;
+  width: 80%;
+  color: #666;
+}
+
+#todoApp > .addTask input {
+  padding: 0 4rem;
+  width: 100%;
+  font-family: "Roboto";
+  font-size: 1.5rem;
+  line-height: 3.4rem;
+  border-radius: 4px;
+  color: #888;
+  background-color: #343A40;
+  border: 2px solid #2F3339;
+}
+
+#todoApp > .addTask input:focus {
+  outline: none;
+}
+
+#todoApp > .addTask input:hover {
+  background-color: #393F45;
+}
+
+#todoApp > .addTask i {
+  position: absolute;
+  margin-left: 1.3rem;
+  line-height: 3.4rem;
+  transform: translateY(0.2rem)
+}
+
+#todoApp > .taskList {
+  width: 80%;
+  margin-top: 1.6rem;
+  text-align: left;
+  list-style: none;
+  font-size: 1.5rem;
+  line-height: 1.8rem;
+}
+#todoApp > .taskList li {
+  position: relative;
+  margin-bottom: 1.4rem;
+  padding-left: 3rem;
+}
+
+#todoApp > .taskList li input{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 4px;
+  background-color: #484F59;
+  opacity: 0;
+  z-index: 1;
+  cursor: pointer;
+}
+
+#todoApp > .taskList .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1.8rem;
+  width: 1.8rem;
+  color: #888;
+  background-color: #484F59;
+  border: 2px solid #2F3339;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+#todoApp > .taskList input:hover ~ .checkmark {
+  background-color: #636A74;
+}
+
+#todoApp > .taskList .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+#todoApp > .taskList input:checked ~ .checkmark:after {
+  display: block;
+}
+
+#todoApp > .taskList .checkmark:after {
+  left: 5px;
+  top: 0;
+  width: 5px;
+  height: 9px;
+  border: solid #ddd;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) scale(1);
+}
+
+@keyframes checkmarkZoom {
+  0% {transform: rotate(45deg) scale(0.5)}
+  50% {transform: rotate(45deg) scale(2)}
+  100% {transform: rotate(45deg) scale(1)}
+}
+
+#todoApp > .taskList .animate.checkmark:after {
+  animation: checkmarkZoom .5s;
+}
+
+#todoApp > .taskList li .delete-task {
+  color: #636A74;
+  margin-left: 2.2rem;
+  transform: scale(1.2) translateY(.1rem);
+  cursor: pointer;
+  opacity: 0;
+}
+
+#todoApp > .taskList li .delete-task:hover{
+  color: #a31818;
+}
+
+#todoApp > .taskList li:hover .delete-task{
+  opacity: 1;
+  margin-left: 1.2rem;
+  transition: .2s;
+}

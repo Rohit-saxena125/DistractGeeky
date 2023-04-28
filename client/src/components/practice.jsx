@@ -28,9 +28,9 @@ const Practice = () => {
 
                 </div   >
                 <div id="a1" >
-                    <a href="https://www.leetcode.com/"style={{marginLeft:"12rem"}}><button class="button-87" role="button">Leetcode</button></a>
-                    <a href="https://www.geeksforgeeks.org/"style={{marginLeft:"22rem"}}><button class="button-87" role="button">GeeksforGeeks</button></a>
-                    <a href="https://www.atcoder.jp/"style={{marginLeft:"20.5rem"}}><button class="button-87" role="button">AtCoder</button></a>
+                    <a href="https://www.leetcode.com/"style={{marginLeft:"21rem"}}><button class="button-87" role="button">Leetcode</button></a>
+                    <a href="https://www.geeksforgeeks.org/"style={{marginLeft:"35rem"}}><button class="button-87" role="button">GeeksforGeeks</button></a>
+                    <a href="https://www.atcoder.jp/"style={{marginLeft:"32.5rem"}}><button class="button-87" role="button">AtCoder</button></a>
     
                 </div>
             </div>
@@ -48,9 +48,9 @@ const Practice = () => {
                 </div   >
 
                 <div id="a1"  >
-                    <a href="https://www.hackerrank.com/"style={{marginLeft:"11rem"}}><button class="button-87" role="button">HackerRank</button></a>
-                    <a href="https://www.codechef.com/"style={{marginLeft:"21.5rem"}}><button class="button-87" role="button">Codechef</button></a>
-                    <a href="https://www.codeforces.com/"style={{marginLeft:"21.5rem"}}><button class="button-87" role="button">Codeforces</button></a>
+                    <a href="https://www.hackerrank.com/"style={{marginLeft:"19rem"}}><button class="button-87" role="button">HackerRank</button></a>
+                    <a href="https://www.codechef.com/"style={{marginLeft:"33.5rem"}}><button class="button-87" role="button">Codechef</button></a>
+                    <a href="https://www.codeforces.com/"style={{marginLeft:"33.5rem"}}><button class="button-87" role="button">Codeforces</button></a>
                 </div>
                 <h1>Distract free Geeks</h1>
 

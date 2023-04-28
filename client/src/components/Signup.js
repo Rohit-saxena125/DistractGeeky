@@ -28,13 +28,15 @@ export default function Signup() {
           window.location.href = "/Login";
         }
     else {
+      alert(response.data);
     window.location.href = "/signup";
+    
     throw new Error(response.data);
   }
 });
    }
     catch (e) {
-  console.log(e.message);
+  alert(e.message);
 }
 
   }
@@ -59,7 +61,7 @@ return (
 
         )
       }
-      <FormAction handleSubmit={handleSubmit} text="Signup" />
+      <FormAction method={handleSubmit} text="Signup" />
     </div>
 
 

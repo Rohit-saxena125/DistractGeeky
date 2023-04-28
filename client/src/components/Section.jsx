@@ -14,7 +14,7 @@ const Section = () => {
         </div>
         <br />
         <div className='para-div'>
-        <p>Welcome to our brand new video platform - a space where you can finally watch the content you love
+        <p className = 'mt'>Welcome to our brand new video platform - a space where you can finally watch the content you love
                without any pesky ads or irrelevant suggestions!
                 We believe that great content should be able to stand on
                  its own and that's why we're committed to providing you

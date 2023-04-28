@@ -8,46 +8,33 @@ const fields = loginFields;
 let fieldsState = {};
 fields.forEach(field => fieldsState[field.id] = '');
 
-export default function Login() {
+export default function Login(props) {
     const [loginState, setLoginState] = useState(fieldsState);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const handleChange = (e) => {
         setLoginState({ ...loginState, [e.target.id]: e.target.value })
     }
-    function handleLogout() {
-        axios.get('http://localhost:9000/logout').then((response) => {
-            console.log(response.data);
-            if (response.status === 200) {
-                alert(response.data + " has been logged out successfully");
-                window.location.href = "/Login";
-                setIsLoggedIn(false);
-            }
-            else {
-                window.location.href = "/";
-                setIsLoggedIn(true);
-                throw new Error(response.data);
-            }
-        });
-
-    }
     const handleSubmit = (e) => {
         e.preventDefault();
         authenticateUser();
     }
-
     //Handle Login API Integration here
     const authenticateUser = async () => {
         try {
             axios.post('http://localhost:9000/login', loginState).then((response) => {
                 console.log(response.data);
                 if (response.status === 200) {
-                    alert(response.data + " has been logged in successfully");
+                    alert(response.data.user.username + " has been logged in successfully");
+                    localStorage.setItem('isLoggedIn', 'true');
+                    console.log(localStorage.getItem('isLoggedIn'));
                     window.location.href = "/";
-                    setIsLoggedIn(true);
                 }
                 else {
+                    alert(response.data);
                     window.location.href = "/Login";
                     setIsLoggedIn(false);
+                    localStorage.setItem('isLoggedIn', 'false');
+                    props.auth = setIsLoggedIn(false);
                     throw new Error(response.data);
 
                 }
@@ -79,8 +66,8 @@ export default function Login() {
             </div>
 
             <FormExtra />
-                { isLoggedIn ?<FormAction handleSubmit={handleLogout} text="Logout" />:<FormAction handleSubmit={handleSubmit} text="Login" />}
-                
+                <FormAction method={handleSubmit} text="Login"/>
+                {console.log(isLoggedIn)}
         </form>
     )
 }

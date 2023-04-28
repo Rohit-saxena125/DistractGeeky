@@ -15,7 +15,6 @@ const passport = require("passport");
 var LocalStrategy = require('passport-local');
 const user = require("./Models/user");
 const auth = require('./Routes/auth');
-const history = require('./Routes/History');
 mongoose.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
     console.log('Connected to DB');
 }).catch(err => {
@@ -33,6 +32,7 @@ const sessionflash = {
         expires: Date.now() + 7 * 24 * 60 * 60 * 1000
     }
 };
+console.log(sessionflash);
 // app.use(passport.initialize());
 app.use(session(sessionflash))
 app.use(flash());
@@ -42,15 +42,10 @@ app.use((req, res, next) => {
     next();
 
 });
-app.use(express.static('client/build'));
-app.get('*', (req,res) => res.sendFile(path.resolve(__dirname, 'client', 'build','index.html')));
+// app.use(express.static());
+// app.get('*', (req,res) => res.sendFile(path.resolve(__dirname, 'client', 'build','index.html')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors({origin:['http://localhost:3000','https://dfg-w1pk.onrender.com'],credentials:true}));
+app.use(cors({origin:'http://localhost:3000',credentials:true}));
 app.use(methodOverride("_method"));
 app.use('/',auth);
-app.use('/',history);
-
-// passport.use(new LocalStrategy(user.authenticate()));
-// passport.serializeUser(user.serializeUser());
-// passport.deserializeUser(user.deserializeUser());

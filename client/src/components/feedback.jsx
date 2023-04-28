@@ -6,7 +6,7 @@ function UserFeedback() {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Here you can submit the feedback to your server or store it in your state management system
-    console.log(feedback);
+    alert(`Submitting Feedback ${feedback}`);
     setFeedback('');
   };
 
@@ -18,7 +18,7 @@ function UserFeedback() {
         <textarea value={feedback} onChange={(e) => setFeedback(e.target.value)} />
       </label>
       <br />
-      <button  className="di"type="submit">Submit</button>
+      <button  className="di"type="submit"onSubmit={handleSubmit}>Submit</button>
     </form></div>
  
   );
